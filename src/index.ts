@@ -25,11 +25,11 @@ export const beautifier: Beautifier = {
       homepageUrl: "https://github.com/andialbrecht/sqlparse",
       installationUrl: "https://github.com/andialbrecht/sqlparse",
       bugsUrl: "https://github.com/andialbrecht/sqlparse/issues",
-      badges: []
+      badges: [],
     },
   ],
   options: {
-    SQL: true
+    SQL: true,
   },
   beautify({
     text,
@@ -45,7 +45,10 @@ export const beautifier: Beautifier = {
       writeFile(filePath, text).then(() =>
         sqlformat
           .run({
-            args: relativizePaths(["-o", filePath, "--reindent", "--indent_width=2", filePath], basePath),
+            args: relativizePaths(
+              ["-o", filePath, "--reindent", "--indent_width=2", filePath],
+              basePath
+            ),
             options: {
               cwd: basePath,
             },
