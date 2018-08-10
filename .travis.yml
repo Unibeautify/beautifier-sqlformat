@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=
+    - CC_TEST_REPORTER_ID=dd69b0657968ce677e397112b98d46f89485cc34899f93ac8f3f72160b26399d
 language: node_js
 node_js:
   - "8"
@@ -14,15 +14,16 @@ cache:
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter;
+      pip install --upgrade sqlparse --user;
     elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-darwin-amd64 > ./cc-test-reporter;
+      brew install sqlparse;
     else
       echo Error:TRAVIS_OS_NAME && exit 1;
     fi
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 script:
-
   - npm test
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
