@@ -29,7 +29,7 @@ export const beautifier: Beautifier = {
     },
   ],
   options: {
-    SQL: true,
+    SQL: options,
   },
   beautify({
     text,
@@ -41,14 +41,16 @@ export const beautifier: Beautifier = {
   }: BeautifierBeautifyData) {
     const sqlformat = dependencies.get<ExecutableDependency>("sqlformat");
     const basePath: string = os.tmpdir();
+    const transformedOptions = transformOptionsToCli(options);
+    transformedOptions.push("--reindent");
     return tmpFile({ postfix: ".sql" }).then(filePath =>
       writeFile(filePath, text).then(() =>
         sqlformat
           .run({
-            args: relativizePaths(
-              ["-o", filePath, "--reindent", "--indent_width=2", filePath],
+            args: transformedOptions.concat(relativizePaths(
+              ["-o", filePath, filePath],
               basePath
-            ),
+            )),
             options: {
               cwd: basePath,
             },
@@ -63,6 +65,18 @@ export const beautifier: Beautifier = {
     );
   },
 };
+
+function transformOptionsToCli(options: Option) {
+  return Object.keys(options).map(key => {
+    const value = options[key];
+    switch (typeof value) {
+      case "boolean":
+        return `--${key}`;
+      default:
+        return `--${key}=${value}`;
+    }
+  });
+}
 
 function tmpFile(options: tmp.Options): Promise<string> {
   return new Promise<string>((resolve, reject) =>
@@ -118,3 +132,7 @@ function relativizePaths(args: string[], basePath: string): string[] {
 }
 
 export default beautifier;
+
+interface Option {
+  [outOptionName: string]: any;
+}
