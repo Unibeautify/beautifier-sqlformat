@@ -17,8 +17,8 @@ const options: BeautifierLanguageOptions = {
         return options.indent_size;
       }
       return 2;
-    }
-  ]
+    },
+  ],
 };
 
 export default options;

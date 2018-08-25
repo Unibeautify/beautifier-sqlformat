@@ -47,10 +47,9 @@ export const beautifier: Beautifier = {
       writeFile(filePath, text).then(() =>
         sqlformat
           .run({
-            args: transformedOptions.concat(relativizePaths(
-              ["-o", filePath, filePath],
-              basePath
-            )),
+            args: transformedOptions.concat(
+              relativizePaths(["-o", filePath, filePath], basePath)
+            ),
             options: {
               cwd: basePath,
             },
