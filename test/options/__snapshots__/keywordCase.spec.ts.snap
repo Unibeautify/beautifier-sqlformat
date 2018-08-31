@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should capitalize SQL keywords 1`] = `
+Object {
+  Symbol(raw): "Select *
+From Users u
+Join users_permission up On u.user_id = up.user_id
+Where u.user_id = 1
+  And up.permission_id = 2;",
+}
+`;
+
+exports[`should lowercase SQL keywords 1`] = `
+Object {
+  Symbol(raw): "select *
+from Users u
+join users_permission up on u.user_id = up.user_id
+where u.user_id = 1
+  and up.permission_id = 2;",
+}
+`;
+
+exports[`should uppercase SQL keywords 1`] = `
+Object {
+  Symbol(raw): "SELECT *
+FROM Users u
+JOIN users_permission up ON u.user_id = up.user_id
+WHERE u.user_id = 1
+  AND up.permission_id = 2;",
+}
+`;

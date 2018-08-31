@@ -1,0 +1,1 @@
+select * FROM Users u join users_permission up on u.user_id = up.user_id where u.user_id = 1 and up.permission_id = 2;

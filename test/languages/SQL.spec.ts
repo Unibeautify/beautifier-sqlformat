@@ -17,7 +17,9 @@ describe("should successfully beautify SQL files", () => {
       .beautify({
         languageName: "SQL",
         options: {
-          SQL: {},
+          SQL: {
+            indent_size: 2,
+          },
         },
         text,
       })
