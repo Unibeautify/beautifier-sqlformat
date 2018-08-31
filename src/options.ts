@@ -10,6 +10,19 @@ const options: BeautifierLanguageOptions = {
   //     return false;
   //   },
   // ],
+  identifiers: [
+    ["identifier_case"],
+    (options): string | undefined => {
+      switch (options.identifier_case) {
+        case "uppercase":
+          return "upper";
+        case "lowercase":
+          return "lower";
+        case "capitalize":
+          return "capitalize";
+      }
+    },
+  ],
   indent_width: [
     ["indent_size"],
     (options): number => {
@@ -17,6 +30,19 @@ const options: BeautifierLanguageOptions = {
         return options.indent_size;
       }
       return 2;
+    },
+  ],
+  keywords: [
+    ["keyword_case"],
+    (options): string | undefined => {
+      switch (options.keyword_case) {
+        case "uppercase":
+          return "upper";
+        case "lowercase":
+          return "lower";
+        case "capitalize":
+          return "capitalize";
+      }
     },
   ],
 };

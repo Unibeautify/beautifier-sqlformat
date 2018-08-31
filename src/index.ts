@@ -71,6 +71,8 @@ function transformOptionsToCli(options: Option) {
     switch (typeof value) {
       case "boolean":
         return `--${key}`;
+      case "undefined":
+        return undefined;
       default:
         return `--${key}=${value}`;
     }
