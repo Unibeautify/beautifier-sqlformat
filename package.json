@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/jest": "23.3.2",
-    "@types/node": "10.10.1",
+    "@types/node": "10.10.2",
     "@types/read-pkg-up": "3.0.1",
     "@types/tmp": "0.0.33",
     "jest": "23.6.0",
