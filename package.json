@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/Unibeautify/beautifier-sqlformat/issues"
   },
-  "homepage": "git+https://github.com/Unibeautify/beautifier-sqlformat#readme",
+  "homepage": "https://github.com/Unibeautify/beautifier-sqlformat#readme",
   "peerDependencies": {
     "unibeautify": ">= 0.12.1"
   },
