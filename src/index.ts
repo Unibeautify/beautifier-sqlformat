@@ -79,7 +79,7 @@ function transformOptionsToCli(options: Option) {
   });
 }
 
-function tmpFile(options: tmp.Options): Promise<string> {
+function tmpFile(options: tmp.FileOptions): Promise<string> {
   return new Promise<string>((resolve, reject) =>
     tmp.file(
       {
