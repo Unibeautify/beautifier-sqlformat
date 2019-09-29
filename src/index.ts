@@ -12,7 +12,7 @@ import * as path from "path";
 import * as os from "os";
 import options from "./options";
 
-const pkg = readPkgUp.sync({ cwd: __dirname })!.package;
+const pkg = readPkgUp.sync({ cwd: __dirname })!.packageJson;
 export const beautifier: Beautifier = {
   name: "sqlformat",
   package: pkg,
