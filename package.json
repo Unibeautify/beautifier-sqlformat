@@ -45,7 +45,7 @@
     "unibeautify": "0.17.0"
   },
   "dependencies": {
-    "read-pkg-up": "^7.0.0",
+    "read-package-up": "^11.0.0",
     "tmp": "0.1.0"
   }
 }
